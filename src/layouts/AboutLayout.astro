@@ -1,0 +1,52 @@
+
+
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const {pageTitle} = Astro.props;
+const {identity} = Astro.props;
+
+const {Style} = Astro.props
+const skillColor = Style['skillColor']
+const FontWeight = Style['FontWeight']
+const textCase = Style['textCase']
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+	</head>
+    <style define:vars={{skillColor, FontWeight, textCase}}>
+        h1 {
+          color: purple;
+          font-size: var(--font);
+        }
+        .skill {
+          
+          color: var(--skillColor);
+          font-weight: var(--FontWeight);
+          text-transform: var(--textCase);
+        }
+      </style>
+	<body>
+      <Header />
+		<h1>{pageTitle}</h1>
+        <h2>Hola! Soy {identity['Name']}</h2>
+
+        <p>Vivo en {identity?.Country}. Soy bastante fan del {identity?.hobbys[0]} y de los {identity?.hobbys[1]} Empeze a aprender Astro el {identity['datestart']}</p>
+        <p>Algunos Datos sobre mi:</p>
+      <ul>
+        {identity?.skills.map(function (skill) {
+            return <li class="skill">{skill}</li>
+        })}
+      </ul>
+      <Footer />
+      <script>
+         import "../scripts/menu.js";
+      </script>
+	</body>
+</html>
