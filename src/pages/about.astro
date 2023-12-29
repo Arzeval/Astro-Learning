@@ -1,0 +1,36 @@
+---
+const pageTitle = "Sobre mi";
+const identity = {
+    Name: "Pablo",
+    Country: "Valencia",
+    hobbys: ["Anime", "Videojuegos",],
+    datestart: "29/12/2023"
+}
+const happy = true;
+const finished = false;
+const goal = 3;
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+	</head>
+	<body>
+        <a href="/">Inicio</a>
+        <a href="/about">Sobre Mi</a>
+		<h1>{pageTitle}</h1>
+        <h2>Hola! Soy {identity?.Name}</h2>
+
+        <p>Vivo en {identity?.Country}. Soy bastante fan del {identity?.hobbys[0]} y de los {identity?.hobbys[1]}
+            Empeze a aprender Astro el {identity['datestart']}    
+        </p>
+        {happy && <p>¡Estoy feliz de aprender Astro!</p>}
+
+        {finished && <p>¡He terminado este tutorial!</p>}
+        
+        {goal === 3 ? <p>Mi objetivo es terminar en 3 días.</p> : <p>Mi objetivo no son 3 días.</p>}
+	</body>
+</html>
